@@ -16,10 +16,16 @@
 //
 // luketeaford@gmail.com
 // 153 Illinois Avenue, Dayton OH 45410
-
+try{
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+if (audioCtx == undefined) {
+    audioCtx = audioCtx || new AudioContext();
+  }
+}catch(e){
+    console.warn('Web Audio API is not supported in this browser');
 
+}
 var TANGUY = {
 
     synth: new AudioContext(),
